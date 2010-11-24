@@ -214,8 +214,8 @@ class GsmModem(object):
         # set some sensible defaults, to make
         # the various modems more consistant
         self.command("ATE0",      raise_errors=False) # echo off
-        self.command("AT+CMEE=1", raise_errors=False) # useful error messages
-        self.command("AT+WIND=0", raise_errors=False) # disable notifications
+        self.command("AT+CMEE=1", raise_errors=False, read_timeout=3) # useful error messages
+        self.command("AT+WIND=0", raise_errors=False, read_timeout=3) # disable notifications
         self.command("AT+CSMS=1", raise_errors=False) # set SMS mode to phase 2+
         self.command(self.smshandler.get_mode_cmd()      ) # make sure in PDU mode
 
